@@ -10,10 +10,15 @@ question = st.text_input("Question: ")
 
 if question:
     chain = get_qa_chain()
-    response = chain.invoke(question)
-
-    st.header("Answer")
-    st.write(response)
+    try:
+        response = chain.invoke(question)
+        st.header("Answer")
+        st.write(response)
+    except Exception as e:
+        if "429" in str(e) or "RESOURCE_EXHAUSTED" in str(e):
+            st.error("⚠️ Rate limit reached. Please wait a minute and try again.")
+        else:
+            st.error(f"Error: {e}")
 
 
 

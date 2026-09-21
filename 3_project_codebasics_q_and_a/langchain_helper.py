@@ -1,4 +1,4 @@
-from langchain_community.vectorstores import FAISS
+﻿from langchain_community.vectorstores import FAISS
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_community.document_loaders.csv_loader import CSVLoader
 from langchain_community.embeddings import HuggingFaceEmbeddings
@@ -12,7 +12,7 @@ load_dotenv()
 
 # Create Google Gemini LLM model
 llm = ChatGoogleGenerativeAI(
-    model="gemini-3.6-flash",
+    model="gemini-2.5-flash-lite",
     google_api_key=os.environ["GOOGLE_API_KEY"],
 )
 
@@ -55,4 +55,4 @@ QUESTION: {question}""")
 if __name__ == "__main__":
     create_vector_db()
     chain = get_qa_chain()
-    print(chain.invoke("Do you have a javascript course?"))
+    print(chain.invoke("Do you have a javascript course?"))
