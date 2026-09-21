@@ -122,6 +122,10 @@ celerybeat.pid
 
 # Environments
 .env
+
+# FAISS vector store binaries
+faiss_index/
+*.pkl
 .venv
 env/
 venv/
